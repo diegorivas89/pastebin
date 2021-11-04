@@ -1,0 +1,51 @@
+version: '3'
+services:
+  # gateway:
+  #   restart: always
+  #   build: ./gateway
+  #   depends_on:
+  #     - reader
+  #     - writer
+  #   ports:
+  #     - 3020:3000
+  #   volumes:
+  #     - ./gateway:/opt/app
+
+  reader:
+    restart: always
+    build: ./reader
+    depends_on:
+      - mongo
+    ports:
+      - 3021:3000
+    volumes:
+      - ./reader:/opt/app
+
+  writer:
+    restart: always
+    build: ./writer
+    depends_on:
+      - mongo
+    ports:
+      - 3022:3000
+    volumes:
+      - ./writer:/opt/app
+
+  shortener:
+    restart: always
+    build: ./shortener
+    # depends_on:
+    #   - mongo
+    ports:
+      - 3023:3000
+    volumes:
+      - ./shortener:/opt/app
+
+  mongo:
+    image: mongo
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodb:/data/db
+volumes:
+  mongodb:
