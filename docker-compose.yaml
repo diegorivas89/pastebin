@@ -31,15 +31,15 @@ services:
     volumes:
       - ./writer:/opt/app
 
-  shortener:
+  key-generator:
     restart: always
-    build: ./shortener
+    build: ./key-generator
     # depends_on:
     #   - mongo
     ports:
       - 3023:3000
     volumes:
-      - ./shortener:/opt/app
+      - ./key-generator:/opt/app
 
   mongo:
     image: mongo

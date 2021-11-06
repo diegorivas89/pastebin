@@ -2,7 +2,7 @@ const express = require('express')
 const axios = require('axios');
 const { Paste } = require('./models');
 const {
-    SHORTENER_URL,
+    KEY_GENERATOR_URL,
     APP_PORT
 } = require('./config')
 
@@ -11,7 +11,7 @@ const app = express();
 app.use(express.json());
 
 app.post('/', (req, res) => {
-    axios.post(SHORTENER_URL).then((shortenerResponse) => {
+    axios.post(KEY_GENERATOR_URL).then((shortenerResponse) => {
         const paste = new Paste({
             key: shortenerResponse.data.key,
             name: req.body.name,

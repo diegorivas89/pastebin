@@ -1,6 +1,9 @@
 const express = require('express')
 const app = express();
 
+const APP_PORT = process.env.APP_PORT || 3000;
+const KEY_LENGHT = process.env.KEY_LENGHT || 7;
+
 function generateKey(length) {
     var result           = '';
     var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -12,9 +15,9 @@ function generateKey(length) {
 }
 
 app.post('/', (req, res) => {
-    res.send({key: generateKey(7)});
+    res.send({key: generateKey(KEY_LENGHT)});
 });
 
-app.listen(3000, () => {
+app.listen(APP_PORT, () => {
   console.log('Example app listening on port 8000!')
 });

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
-const { MONGODB_URL } = require('../config');
+const { MONGO_URL } = require('../config');
 
-mongoose.connect(MONGODB_URL);
+mongoose.connect(MONGO_URL);
 
 const Paste = mongoose.models.paste || mongoose.model('paste', {
     key: String,
