@@ -4,7 +4,7 @@ const { Paste } = require('./models');
 const {
     KEY_GENERATOR_URL,
     APP_PORT
-} = require('./config')
+} = require('./config');
 
 const app = express();
 
